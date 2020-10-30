@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.statemachine.config.OrderOnTransition;
 import com.statemachine.enums.Events;
 import com.statemachine.enums.States;
+import com.statemachine.model.Order;
 import org.springframework.messaging.Message;
 import org.springframework.statemachine.ExtendedState;
 import org.springframework.statemachine.StateMachine;
@@ -38,6 +39,7 @@ public class FactoryEventHandler {
                 stateMachine,
                 message,
                 e));*/
+        Order order = (Order)headers.get("order");
         System.out.println(String.format("=============== 【target=%s, currentState=%s, events=%s, headers=%s】",
                 "S1",
                 stateMachine.getState().getId(),
@@ -66,6 +68,7 @@ public class FactoryEventHandler {
                 stateMachine,
                 message,
                 e));*/
+        Order order = (Order)headers.get("order");
         System.out.println(String.format("=============== 【target=%s, currentState=%s, events=%s, headers=%s】",
                 "S2",
                 stateMachine.getState().getId(),
@@ -86,7 +89,7 @@ public class FactoryEventHandler {
                 stateMachine,
                 message,
                 e));*/
-
+        Order order = (Order)headers.get("order");
         System.out.println(String.format("=============== 【target=%s, currentState=%s, events=%s, headers=%s】",
                 "S0->S2",
                 stateMachine.getState().getId(),

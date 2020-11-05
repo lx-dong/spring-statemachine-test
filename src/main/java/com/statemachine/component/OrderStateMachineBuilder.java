@@ -1,5 +1,7 @@
 package com.statemachine.component;
 
+import com.statemachine.core.ExtStateMachine;
+import com.statemachine.core.ExtStateMachineFactory;
 import com.statemachine.config.factory.FactoryConfig;
 import com.statemachine.enums.Events;
 import com.statemachine.enums.States;
@@ -20,15 +22,29 @@ import javax.annotation.Resource;
  * @date 2020/10/30
  */
 @Component
-public class OrderStateMachineHolder {
+public class OrderStateMachineBuilder {
     @Resource(name = "stateMachineFactory")
     StateMachineFactory<States, Events> stateMachineFactory;
+
+    @Resource(name = "extStateMachineFactory")
+    ExtStateMachineFactory<States, Events> extStateMachineFactory;
 
     @Resource(name = "factoryPersister")
     private StateMachinePersister<States, Events, Order> factoryPersister;
 
-    public StateMachine getStateMachine(Order order){
+    public StateMachine build(Order order){
         StateMachine machine =  stateMachineFactory.getStateMachine(FactoryConfig.orderStateMachineId);
+        machine.start();
+        try {
+            factoryPersister.restore(machine,order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return machine;
+    }
+
+    public ExtStateMachine buildExt(Order order){
+        ExtStateMachine machine =  extStateMachineFactory.getStateMachine(FactoryConfig.orderStateMachineId);
         machine.start();
         try {
             factoryPersister.restore(machine,order);

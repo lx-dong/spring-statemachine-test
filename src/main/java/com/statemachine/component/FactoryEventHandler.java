@@ -24,7 +24,7 @@ import java.util.Map;
 public class FactoryEventHandler {
 
 
-    @OrderOnTransition(target = States.S1)
+  //  @OrderOnTransition(target = States.S1)
     public void t1(@EventHeaders Map<String, Object> headers,
                    ExtendedState extendedState,
                    StateMachine<States, Events> stateMachine,

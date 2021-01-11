@@ -6,11 +6,10 @@ import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.action.Action;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/2
  */
 public abstract class AbstractAction<S,E> implements Action<S,E> {

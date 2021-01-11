@@ -8,11 +8,10 @@ import org.springframework.statemachine.support.AbstractStateMachine;
 import java.util.UUID;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/4
  */
 public class ExtStateMachineFactory<S, E> implements StateMachineFactory<S, E>{

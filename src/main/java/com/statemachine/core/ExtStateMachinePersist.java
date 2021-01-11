@@ -7,11 +7,10 @@ import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/5
  */
 public class ExtStateMachinePersist<S, E, T extends EventObj<S, E>> implements StateMachinePersist<S, E, T> {

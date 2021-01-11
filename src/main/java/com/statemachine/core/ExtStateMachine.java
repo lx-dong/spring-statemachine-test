@@ -15,11 +15,10 @@ import java.util.Collection;
 import java.util.UUID;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/4
  */
 public class ExtStateMachine<S, E> implements StateMachine<S, E> {

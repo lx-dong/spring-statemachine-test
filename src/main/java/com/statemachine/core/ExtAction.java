@@ -6,14 +6,13 @@ import org.springframework.statemachine.action.Action;
 import org.springframework.util.StringUtils;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/4
  */
-public abstract class ExtAction<S,E,P> implements Action<S,E> {
+public abstract class ExtAction<S,E,P,Et> implements Action<S,E> {
     private StateContext<S, E> stateContext;
 
     @Override
@@ -25,6 +24,10 @@ public abstract class ExtAction<S,E,P> implements Action<S,E> {
 //                if (!tryLock()) {
 //                    throw new RuntimeException("lock fail");
 //                }
+            }
+            Et entity = getEntity(getBizNo());
+            if (!context.getMessage().getPayload().equals(getCurrState(entity))) {
+                throw new RuntimeException("状态不一致");
             }
             handle(context);
         } catch (Exception e) {
@@ -50,8 +53,13 @@ public abstract class ExtAction<S,E,P> implements Action<S,E> {
         return (P)stateContext.getMessageHeaders().get(EventObj.PARAM_NAME);
     }
 
+    public abstract Et getEntity(String bizNo);
 
-    public abstract boolean needLock();
+    public abstract S getCurrState(Et entity);
+
+    public  boolean needLock(){
+        return true;
+    }
 
     public  String getRedisKey(StateContext<S, E> context){
         if (StringUtils.isEmpty(getBizNo())) {

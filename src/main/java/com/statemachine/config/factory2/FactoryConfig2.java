@@ -29,11 +29,10 @@ import javax.annotation.Resource;
 import java.util.EnumSet;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/10/29
  */
 @Configuration

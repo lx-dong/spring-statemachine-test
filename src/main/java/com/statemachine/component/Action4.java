@@ -10,11 +10,10 @@ import org.springframework.statemachine.StateContext;
 import org.springframework.stereotype.Component;
 
 /**
- * 上海识装信息科技有限公司
- *
+
  * @author DongLingXu
  * @description
- * @email donglingxu@theduapp.com
+ * @email
  * @date 2020/11/2
  */
 @Slf4j
